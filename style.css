@@ -1,0 +1,768 @@
+body {
+	font-family: "Abel", "Lato", "Times New Roman", "Arial";
+}
+
+.no-margin {
+	margin: 0px;
+}
+
+.position-rel {
+	position: relative;
+}
+
+.position-abs {
+	position: absolute;
+}
+
+.nav {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: space-between;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: auto;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+#nav-div {
+	width: auto;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	margin-right: 2%;
+}
+
+#nav-button {
+	background-color: rgba(0, 0, 0, 0);
+	border: 0px;
+	width: auto;
+	height: auto;
+	display: inline-block;
+	font-size: 1.2em;
+	text-align: center;
+	align-self: center;
+	position: relative;
+}
+
+#nav-button:hover {
+	transform: scale(1.2, 1.2);
+}
+
+#menu-dropdown {
+	/*Just a selector*/
+}
+
+#menu-dropdown-false {
+	display: none;
+}
+
+.selection-menu {
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	display: inline-grid;
+	grid-template-columns: 10vw;
+	bottom: 0vh;
+	right: 16vw;
+}
+
+.selection-item {
+	min-width: 15vw;
+	min-height: 6vh;
+	display: block;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: rgba(128, 128, 128, 1.0);
+	font-size: 1.5em;
+	text-align: left;
+	padding-left: 1vw;
+}
+
+.selection-item-1:hover, .selection-item-2:hover, .selection-item-3:hover, .selection-item-4:hover, .selection-item-5:hover, .selection-item-6:hover {
+	background-color: red;
+	color: black;
+	font-size: 1.6em;
+}
+
+.filter {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	top: 0%;
+	left: 0%;
+	padding-top: 18%;
+	text-align: center;
+	font-size: 3em;
+	color: white;
+	font-weight: bold;
+	text-shadow: 3px 2px rgba(0, 0, 0, 1.0);
+}
+
+.title {
+	display: inline-block;
+}
+
+.title-link-formatting {
+	margin-left: 2%;
+	text-decoration: none;
+	color: white;
+}
+
+.title-description {
+	display: inline-block;
+}
+
+.scroll-div {
+	background-image: url("images/black-square-mosaic-background.jpg");
+	padding-top: 6%;
+	padding-bottom: 7%;
+	text-align: center;
+	color: white;
+	font-size: 3em;
+}
+
+.interest-div {
+	background-image: url("images/pattern vectors.jpg");
+	padding: 25% 0px 60% 0px;
+}
+
+.interest-div-h1 {
+	text-align: center;
+	font-size: 3em;
+}
+
+.interest-br {
+	font-size: 20em;
+}
+
+.interest-div-h2 {
+	text-align: center;
+	font-size: 2.5em;
+}
+
+.investment-bg {
+	height: 50vh;
+	padding-top: 10%;
+	padding-bottom: 30%;
+	/*background: linear-gradient(#dad299bf, #b0dab980);*/
+	background-image: url("images/wallstreet.jpg");
+	text-align: center;
+}
+
+.investment-container {
+	display: flex;
+	justify-content: space-around;
+	padding: 5% 10% 5% 10%;
+	background: rgba(255, 255, 255, 0.8);
+}
+
+.investment-title {
+	font-size: 5em;
+	font-family: "Playfair Display", "Times New Roman", "Arial";
+	background: rgba(255, 255, 255, 0.8);
+}
+
+.financial-des {
+	font-size: 1.7em;
+	font-weight: bold;
+	padding-bottom: 5%;
+}
+
+.investment-button {
+	width: 32vh;
+	height: 7vh;
+	border-radius: 5px;
+	border: 0px;
+	box-shadow: 0px 3px white;
+	background-color: rgba(96, 151, 253, 1.0);
+	color: white;
+	font-size: 1.4em;
+	font-weight: bold;
+	line-height: 50%;
+}
+
+.investment-button:hover {
+	background-color: white;
+	color: rgba(96, 151, 253, 1.0);
+	box-shadow: 0px 3px rgba(96, 151, 253, 1.0);
+	transition-duration: 0.4s;
+}
+
+.steak {
+	font-size: 2.5em;
+	font-weight: bold;
+	font-family: "Playfair Display";
+	padding-bottom: 5%;
+	background: rgba(255, 255, 255, 0.8);
+}
+
+.white-bricks {
+	background-image: url("images/white-brick.jpg");
+	height: 250vh;
+}
+
+.add-some-colour {
+	display: block;
+	padding-top: 36%;
+	text-align: center;
+	font-size: 4em;
+	font-weight: bold;
+	color: black;
+	text-shadow: 0px 1px 1px white;
+}
+
+.coloured-bricks {
+	background-image: url("images/colourful-bricks.jpg");
+	height: 250vh;
+	background-size: 150%;
+	text-align: center;
+}
+
+.there-we-go {
+	padding-top: 38%;
+	font-size: 4em;
+	font-weight: bold;
+	color: white;
+}
+
+.whats-this {
+	padding-top: 36%;
+	font-size: 4em;
+	font-weight: bold;
+	color: white;
+}
+
+.diabolo-title {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	text-align: center;
+	font-size: 4em;
+	text-decoration-line: overline underline;
+	color: white;
+	background-color: black;
+}
+
+.diabolo-bg {
+	position: relative;
+	background-image: url("images/sundia.jpg");
+	background-size: 100%;
+	height: 100vh;
+}
+
+.gallery-button {
+	position: absolute;
+	top: 5%;
+	left: 40%;
+	width: 20vw;
+	height: 15vh;
+	background-image: url("images/galaxy.jpg");
+	color: white;
+	text-shadow: 0px 0px 50px silver;
+	font-family: inherit;
+	font-weight: bold;
+	font-size: 2.5em;
+	text-decoration-line: overline underline;
+	border: 3px white;
+	border-style: outset;
+}
+
+.biggest-performance {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	text-align: center;
+	font-size: 4em;
+	text-decoration-line: overline underline;
+	color: white;
+	background-color: black;	
+}
+
+.gallery-button:hover {
+	background-image: none;
+	background-color: black;
+	color: rgba(10, 10, 30, 1.0);
+	font-size: 3em;
+	transition-duration: 0.5s;
+}
+
+.intro-1 {
+	margin: 0px;
+	padding-top: 50%;
+	background-image: url("images/black-square-mosaic-background.jpg");
+	background-size: 100%;
+	height: 120vh;
+	text-align: center;
+	font-size: 4em;
+	color: white;
+}
+
+.intro-2 {
+	padding-top: 50%;
+	background-image: url("images/green-mosaic.jpg");
+	height: 120vh;
+	text-align: center;
+	font-size: 4em;
+	color: black;
+}
+
+.chess-bg {
+	background-image: url("images/chess-bg.png");
+	background-size: 14.3%;
+	height: auto;
+	padding-top: 25%;
+}
+
+.chess-quote {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	text-align: center;
+	background-color: rgba(225, 225, 225, 0.5);
+	font-size: 5em;
+}
+
+.step-1 {
+	font-size: 3em;
+}
+
+.chess-container-1 {
+	margin-top: 20%;
+	text-align: center;
+	padding-top: 0%;
+	font-weight: bold;
+}
+
+.learn-chess-title {
+	font-size: 4em;
+}
+
+.learn-chess {
+	margin-top: 6vh;
+	width: 20vw;
+	height: 10vh;
+	font-size: 2em;
+	line-height: 50%;
+	color: white;
+	background-color: rgba(225, 153, 0, 1.0);
+	border: 0px;
+	border-radius: 10px;
+	box-shadow: 0px 2px black;
+	transition-duration: 0.5s;
+}
+
+.learn-chess:hover {
+	color: rgba(225, 153, 0, 1.0);
+	background-color: white;
+	box-shadow: 0px 2px rgba(225, 153, 0, 1.0);
+	transition-duration: 0.5s;
+}
+
+.chess-container-2 {
+	margin-top: 20%;
+	text-align: center;
+	padding-top: 0%;
+	font-weight: bold;
+}
+
+.step-2 {
+	font-size: 3em;
+}
+
+.play-chess-title {
+	font-size: 4em;
+}
+
+.play-chess {
+	margin-top: 6vh;
+	width: 35vw;
+	height: 11vh;
+	font-size: 2em;
+	line-height: 50%;
+	color: white;
+	background-color: rgba(225, 153, 0, 1.0);
+	border: 0px;
+	border-radius: 10px;
+	box-shadow: 0px 2px black;
+	transition-duration: 0.5s;
+}
+
+.play-chess:hover {
+	color: rgba(225, 153, 0, 1.0);
+	background-color: white;
+	box-shadow: 0px 2px rgba(225, 153, 0, 1.0);
+	transition-duration: 0.5s;
+}
+
+.chess-container-3 {
+	background-color: rgba(192, 192, 192, 0.8);
+	margin-top: 19%;
+	text-align: center;
+	padding-top: 0%;
+	padding-bottom: 8%;
+	font-weight: bold;
+}
+
+.favourite-game {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	font-size: 4em;
+}
+
+.khai2019 {
+	padding-bottom: 2%;
+	font-size: 1.5em;
+}
+
+.current-rating {
+	padding-bottom: 2%;
+	padding-top: 2%;
+	font-size: 1.5em;
+}
+
+.current-rating-container {
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	width: 200px;
+	height: 70px;
+}
+
+.rating-iframe {
+	position: absolute;
+	top: -160px;
+	left: -120px;
+	width: 1280px;
+	height: 1200px;
+}
+
+.chess-memes {
+	padding-top: 2%;
+	font-size: 3em;
+}
+
+.chess-container-4 {
+	display: flex;
+	justify-content: center;
+}
+
+.universe-2 {
+	background-image: url("images/universe-2.jpg");
+	background-size: 100%;
+	height: 90vh;
+	padding-top: 20%;
+	text-align: center;
+	color: white;
+	text-shadow: 0px 0px 20px blue;
+	font-size: 3em;
+}
+
+.wormhole {
+	background-image: url("images/wormhole.jpg");
+	background-size: 100%;
+	height: 80vh;
+	padding-top: 20%;
+	text-align: center;
+	color: white;
+	text-shadow: 0px 0px 20px blue;
+	font-size: 3em;
+}
+
+.maths-container {
+	text-align: center;
+}
+
+.maths-bg {
+	background-image: url("images/maths.jpg");
+	background-size: 100%;
+	height: auto;
+}
+
+.universe-bg {
+	background-image: url("images/universe.jpg");
+	padding-bottom: 10%;
+	padding-top: 10%;
+}
+
+.mathematics-title {
+	width: 100%;
+	height: 40vh;
+	color: white;
+	font-size: 5em;
+	font-weight: bold;
+	font-family: "Cambria Maths";
+	text-shadow: 0px 0px 100px silver;
+	background-color: transparent;
+	border: 0px;
+}
+
+.maths-language {
+	padding-top: 1%;
+	font-size: 2em;
+	color: white;
+	text-shadow: 0px 0px 100px silver;
+	font-family: "Cambria Math";
+	text-shadow: 0px 0px 20px white;
+}
+
+.numbers {
+	margin-top: 20%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	font-size: 3em;
+	font-family: "Cambria Math";
+}
+
+.maths-container-2 {
+	background: linear-gradient(#111111, #000000);
+	margin-top: 40%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	font-size: 1em;
+	font-family: inherit;
+	color: white;
+}
+
+.mathematical-problems {
+	font-size: 3em;
+	font-family: inherit;
+	padding-top: 15%;
+	padding-bottom: 5%;
+}
+
+.fn {
+	font-size: 2.8em;
+	font-family: "Cambria Math";
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+.collatz {
+	font-size: 1.2em;
+	font-family: "Cambria Math";
+	padding-bottom: 10%;
+}
+
+.numbers-do {
+	text-align: center;
+	margin-top: 25%;
+	margin-bottom: 50%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	font-size: 3em;
+	background-color: white;
+}
+
+.math-quote {
+	display: block;
+	width: 100%;
+}
+
+.economics {
+	background-image: url("images/economics.jpg");
+	height: 100vh;
+	padding-top: 10%;
+	padding-bottom: 5%;
+	text-align: center;
+	font-size: 5em;
+}
+
+.game-theory {
+	height: 230vh;
+	padding-top: 10%;
+	padding-bottom: 5%;
+	text-align: center;
+}
+
+.game-theory-title {
+	font-size: 5em;
+}
+
+.game-theory-what {
+	padding-top: 2%;
+	padding-bottom: 20%;
+	font-size: 3em;
+}
+
+.evolution-of-trust {
+	padding-top: 5%;
+	font-size: 2em;
+}
+
+.decrypt-center {
+	text-align: center;
+}
+
+.cryptography-title {
+	margin-top: 20%;
+	text-align: center;
+	font-size: 3em;
+}
+
+.binary {
+	font-family: "Times New Roman";
+	font-size: 2em;
+	text-align: justify;
+}
+
+.decrypt {
+	font-family: "Times New Roman";
+	font-size: 1em;
+	text-align: center;
+}
+
+.secret-code {
+	font-size: 2.5em;
+	text-align: center;
+	padding-bottom: 10%;
+}
+
+.hello-code {
+	width: 50%;
+	margin: 0px auto;
+}
+
+.infinite-hello {
+	font-size: 2em;
+	font-family: "Courier New";	
+}
+
+.hellox3 {
+	font-size: 2em;
+	font-family: "Courier New";
+	color: blue;
+}
+
+.programming-title {
+	margin-top: 30%;
+	font-size: 4em;
+	text-align: center;
+}
+
+.play-editor {
+	font-family: "Courier New";
+	font-size: 2em;
+	padding: 5%;
+}
+
+.my-aim {
+	font-family: "Courier New";
+	font-size: 2em;
+	padding: 5%;	
+}
+
+.why-ml {
+	font-family: "Courier New";
+	font-size: 2em;
+	padding: 5%;
+}
+
+.tired {
+	text-align: right;
+	font-size: 3em;
+	padding-top: 40%;
+	padding-left: 5%;
+	padding-right: 15%;
+}
+
+.tired-2 {
+	text-align: left;
+	font-size: 3em;
+	padding-top: 20%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.forest {
+	background-image: url("images/forest-2.jpg");
+	background-size: 100%;
+	height: 190vh;
+}
+
+.forest-divider {
+	background-color: black;
+	height: 20%;
+	color: white;
+	text-align: center;
+	font-size: 2em;
+}
+
+.forest-2 {
+	background-image: url("images/forest.jpg");
+	background-size: 100%;
+	height: 120vh;
+}
+
+.forest-divider-2 {
+	background-color: black;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	height: 20%;
+	color: white;
+	text-align: center;
+	font-size: 2em;
+	font-family: "Times New Roman";
+}
+
+.tiger-13 {
+	width: 100%;
+	display: block;
+}
+
+.double-tiger {
+	background-color: black;
+	font-family: "Times New Roman";
+	color: white;
+	text-align: center;
+	font-size: 1.5em;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.double-tiger-des {
+	background-color: orange;
+	font-family: "Times New Roman";
+	color: black;
+	text-align: justify;
+	font-size: 1em;
+	padding: 2%;
+}
+
+.tiger-1 {
+	width: 100%;
+	display: block;
+}
+
+.tiger-1-des {
+	background-color: black;
+	font-family: "Times New Roman";
+	color: white;
+	text-align: center;
+	font-size: 1.5em;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.hobbes {
+	width: 100%;
+	display: block;
+}
+
+.thats-all {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.emai-contact {
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.tiger-head {
+	position: fixed;
+	width: 30%;
+	right: -60px;
+	bottom: -20px;
+}
