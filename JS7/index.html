@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Trader</title>
+
+	<!-- Links to Playfair Desplay font-family: 'Playfair Display', serif; -->
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+	<!-- Links to Amatic SC font-family: 'Amatic SC', cursive; -->
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+
+	<style type="text/css">
+		.the-trader {
+			font-family: "Playfair Display", "Times New Roman";
+			text-align: center;
+			font-size: 3em;
+			margin: 0px;
+		}
+
+		#instructions {
+			text-align: center;
+			display: block;
+			font-size: 1.5em;
+		}
+
+		#instruction-button {
+			margin-top: 2%;
+			margin-bottom: 2%;
+			width: 15vw;
+			font-size: 1.2em;
+			color: white;
+			background-color: rgba(102, 0, 102, 1.0);
+			border: 0px;
+			font-family: "Playfair Display", "Times New Roman";
+			animation-name: instructions-button;
+			animation-duration: 6s;
+			animation-iteration-count: infinite;
+		}
+
+		@keyframes instructions-button {
+			0% {transform: scale(1.0, 1.0);}
+			50% {transform: scale(1.1, 1.1);}
+			100% {transform: scale(1.0, 1.0);}
+		}
+
+		#instruction-button:hover {
+			transform: scale(1.1, 1.1);
+			background-color: 
+		}
+
+		.example-img {
+			width: 40%;
+			height: 40%;
+		}
+
+		.instruction-img-box {
+			position: absolute;
+			z-index: 2;
+			display: flex;
+			text-align: center;
+			align-items: center;
+			justify-content: center;
+			left: 19vw;
+			right: 19vw;
+			background-color: lightcyan;
+			border: 5px dashed silver;
+		}
+
+		.instructions-sizing {
+			width: 30vw;
+			margin: 0px;
+		}
+
+		.example-buy-button {
+			height: 5vh;
+			width: 8vw;
+			margin-bottom: 2%;
+			background-color: green;
+			color: white;
+			font-size: 0.6em;
+			border: 0px;
+			transition-duration: 0.2s;
+		}
+
+		.example-buy-button:hover {
+			transform: scale(1.1, 1.1);
+			transition-duration: 0.3s;
+			font-weight: bold;
+		}
+
+		.example-sell-button {
+			height: 5vh;
+			width: 8vw;
+			margin-bottom: 2%;
+			background-color: red;
+			color: white;
+			font-size: 0.6em;
+			border: 0px;
+			transition-duration: 0.2s;
+		}
+
+		.example-sell-button:hover {
+			transform: scale(1.1, 1.1);
+			transition-duration: 0.3s;
+			font-weight: bold;
+		}
+
+		.buy-sell {
+			font-size: 2em;
+			color: red;
+			margin: 0px;
+		}
+
+		.buy-box {
+			display: flex;
+			text-align: center;
+			align-items: center;
+			justify-content: space-around;
+			padding-bottom: 3%;
+		}
+
+		.sell-box {
+			display: flex;
+			text-align: center;
+			align-items: center;
+			justify-content: space-around;
+			padding-bottom: 3%;
+		}
+
+		.instructions-close {
+			position: absolute;
+			font-size: 1.2em;
+			color: brown;
+			right: 1%;
+			top: 1%;
+			transition-duration: 0.2s;
+		}
+
+		.instructions-close:hover {
+			font-size: 1.5em;
+			transition-duration: 0.5s;
+		}
+
+		.animation-bg {
+			text-align: center;
+			background-color: rgba(5, 0, 35, 1.0);
+			position: relative;
+		}
+
+		.work-gif {
+			width: 20%;
+		}
+
+		.work-x3 {
+			position: absolute;
+			top: 10%;
+			left: 60%;
+			font-size: 1.5em;
+			animation-name: work-x3;
+			animation-duration: 2s;
+			animation-timing-function: ease-in;
+			animation-iteration-count: infinite;
+		}
+
+		@keyframes work-x3 {
+			0% {left: 60%; opacity: 1;}
+			98% {left: 40%; opacity: 0.5;}
+			100% {left: 40%; opacity: 0;}
+		}
+
+		.work-hider {
+			position: absolute;
+			width: 20%;
+			height: 15%;
+			background-color: rgba(5, 0, 35, 1.0);
+			top: 8%;
+			left: 60%;
+		}
+
+		.quote {
+			text-align: center;
+			color: white;
+			padding-top: 1%;
+			padding-bottom: 1%;
+			line-height: 200%;
+			height: 25vh;
+			font-size: 2em;
+			background-color: maroon;
+		}
+
+		#start-button {
+			width: 20vw;
+			height: 9vh;
+			font-size: 0.8em;
+			font-family: "Playfair Display", "Times New Roman";
+			background-color: rgba(0, 0, 102, 1.0);
+			color: white;
+			border: 0px;
+			animation-name: start-zoom;
+			animation-duration: 4s;
+			animation-iteration-count: infinite;
+		}
+
+		.start-link {
+			font-size: inherit;
+			font-family: inherit;
+			color: inherit;
+			text-decoration: none;
+		}
+
+		@keyframes start-zoom {
+			0% {transform: scale(1.0, 1.0);}
+			50% {transform: scale(1.2, 1.2);}
+			100% {transform: scale(1.0, 1.0);}
+		}
+
+		.game-container {
+			height: 100vh;
+			width: 100%;
+			text-align: center;
+			border: 0px solid red;
+		}
+
+		#play-game {
+			position: absolute;
+		}
+
+		.play-area {
+			width: 100%;
+		}
+
+		#start-game {
+			position: absolute;
+			bottom: 20%;
+			right: 45%;
+			font-size: 5em;
+			font-family: "Amatic SC";
+			font-weight: bold;
+			color: black;
+		}
+
+		#start-game:hover {
+			color: brown;
+			transform: scale(1.1, 1.1);
+		}
+
+		#score {
+			position: absolute;
+			right: 12%;
+			top: 27%;
+			width: 15%;
+			font-size: 3em;
+			color: black;
+			font-family: "Amatic SC";
+			font-weight: bold;
+			overflow: visible;
+			transform: rotate(13deg);
+		}
+
+		#score-points {
+			/*???*/
+		}
+
+		#count-3 {
+			position: absolute;
+			bottom: 43%;
+			right: 45%;
+			font-size: 5em;
+			font-family: "Amatic SC";
+			font-weight: bold;
+			color: black;
+		}
+
+		#buy-button {
+			position: absolute;
+			width: 12vw;
+			height: 8vh;
+			bottom: 20%;
+			left: 35%;
+			font-size: 1.8em;
+			background-color: green;
+			color: white;
+			border: 0px;
+			transition-duration: 0.1s;
+		}
+
+		#buy-button:hover {
+			transform: scale(1.1, 1.1);
+			transition-duration: 0.1s;
+		}
+
+		#sell-button {
+			position: absolute;
+			width: 12vw;
+			height: 8vh;
+			bottom: 20%;
+			right: 35%;
+			font-size: 1.8em;
+			background-color: red;
+			color: white;
+			border: 0px;
+			transition-duration: 0.1s;
+		}
+
+		#sell-button:hover {
+			transform: scale(1.1, 1.1);
+			transition-duration: 0.1s;
+		}
+
+		#question-box {
+			position: absolute;
+			bottom: 30%;
+			left: 35%;
+			width: 30%;
+			height: 40%;
+			/*border: 1px dashed red;*/
+		}
+
+		#timer {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			right: 30%;
+			bottom: 30%;
+			width: 45px;
+			height: 290px;
+		}
+
+		.clock-dimensions {
+			width: 15px;
+			height: 15px;
+			border: 3px solid brown;
+		}
+
+		.blacken {
+			background-color: brown;
+		}
+
+		#times-up {
+			position: absolute;
+			bottom: 52%;
+			right: 41%;
+			font-size: 5em;
+			font-family: "Amatic SC";
+			font-weight: bold;
+			color: black;
+		}
+
+		#final-score-label {
+			position: absolute;
+			bottom: 37%;
+			right: 47%;
+			font-size: 5em;
+			font-family: "Amatic SC";
+			font-weight: bold;
+			color: black;
+		}
+
+		#play-again {
+			position: absolute;
+			bottom: 24%;
+			left: 40%;
+			width: 20vw;
+			height: 9vh;
+			font-size: 2em;
+			font-family: "Playfair Display", "Times New Roman";
+			background-color: white;
+			color: brown;
+			border: 3px dashed grey;
+			transition: scale(1.0, 1.0);
+			transition-duration: 0.5s;
+		}
+
+		#play-again:hover {
+			transform: scale(1.1, 1.1);
+			transition-duration: 0.5s;
+		}
+
+		body {
+			font-family: "Playfair Display", "Times New Roman";
+			background: linear-gradient(#232526, #414345);
+			height: 1400px;
+			color: white;
+			margin: 0px;
+		}
+
+	</style>
+</head>
+<body>
+	<div style="position: relative;">
+		<h1 class="the-trader">THE TRADER</h1>
+		<div id="instructions"><button id="instruction-button">Instructions</button><br>You are a trader. You buy when the time is right and sell with no mercy.</div>
+		<div id="ins-box" class="instruction-img-box" style="display: none;">
+			<div class="instructions-sizing">
+				<div class="buy-sell" style="border-bottom: 0px solid red;"><button class="example-buy-button">BUY</button></div>
+				<div class="buy-box">
+					<img class="example-img" src="Images/buy-green.png">
+					<img class="example-img" src="Images/buy-red.png">
+				</div>
+			</div>
+			<div class="instructions-sizing">
+				<div class="buy-sell" style="border-bottom: 0px solid red;"><button class="example-sell-button">SELL</button></div>
+				<div class="sell-box">
+					<img class="example-img" src="Images/sell-green.png">
+					<img class="example-img" src="Images/sell-red.png">
+				</div>
+				<div id="instructions-close" class="instructions-close">&#x2718;</div>
+			</div>
+		</div>
+		<hr style="background-color: rgba(5, 0, 35, 1.0)">
+	</div>
+	<div>
+		<div class="animation-bg">
+			<img class="work-gif" src="Images/work.gif">
+			<div class="work-x3">Work! Work! Work!</div>
+			<div class="work-hider"></div>
+		</div>
+		<hr style="background-color: rgba(5, 0, 35, 1.0)">
+		<div>
+			<div class="quote">RULE NO. 1: NEVER LOSE MONEY. RULE NO. 2: DON'T FORGET RULE NO. 1<br>
+				<button id="start-button"><a id="start-link" class="start-link" href="#play-game">>>> Start >>></a></button>
+			</div>
+			<hr>
+			<div class="game-container">
+				<div id="play-game"></div>
+				<div style="width: 100% height: auto; position: relative;">
+					<img class="play-area" src="Images/office-table.jpg">
+					<div id="start-game">Start</div>
+					<div id="score" style="display: none;">Score: <span id="score-points"></span></div>
+					<div id="count-3" style="display: none;">Ready</div>
+					<button id="buy-button" style="display: none;">BUY</button>
+					<button id="sell-button" style="display: none;">SELL</button>
+					<div id="question-box" style="display: none;">
+						<!-- Questions goes here -->
+					</div>
+					<div id="timer" style="display: none;">
+						<div id="$32-power-5" class="clock-dimensions blacken">&#32;</div>
+						<div id="$16-power-4" class="clock-dimensions blacken">&#32;</div>
+						<div id="$8-power-3" class="clock-dimensions blacken">&#32;</div>
+						<div id="$4-power-2" class="clock-dimensions blacken">&#32;</div>
+						<div id="$2-power-1" class="clock-dimensions">&#32;</div>
+						<div id="$1-power-0" class="clock-dimensions">&#32;</div>
+					</div>
+					<div id="times-up" style="display: none;">Time's up!</div>
+					<div id="final-score-label" style="display: none;">Score: <span id="final-score"></span></div>
+					<button id="play-again" style="display: none;">Play Again</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+
+		// Instructions Button //
+
+		var instructions_state = false
+		var instr_button = document.getElementById("instructions");
+		instr_button.addEventListener("click", function(){
+			if(instructions_state == false) {
+				var instructions_box = document.getElementById("ins-box");
+				instructions_box.removeAttribute("style");
+				instructions_state = true;
+			} else if (instructions_state == true) {
+				var instructions_box = document.getElementById("ins-box");
+				instructions_box.style.display = "none";
+				instructions_state = false;
+			} else {
+				console.log("DEBUG: Error");
+			}
+		});
+
+		var instructions_close = document.getElementById("instructions-close");
+		instructions_close.addEventListener("click", function(){
+			var instructions_box = document.getElementById("ins-box");
+			instructions_box.style.display = "none";
+			instructions_state = false;
+		});
+
+		// Start Game Button //
+
+		var start_button = document.getElementById("start-button");
+		start_button.addEventListener("click", function(){
+			var start_link = document.getElementById("start-link");
+			start_link.click();
+			window.scrollBy(0, 100);
+		});
+
+		var start_game = document.getElementById("start-game");
+		var game_state = false;
+		start_game.addEventListener("click", function(){
+			game_state = true // Game starts //
+			start_game.style.display = "none";
+			
+			// Count down //
+			var count_3 = document.getElementById("count-3");
+			count_3.removeAttribute("style");
+			setTimeout(function(){
+				count_3.innerHTML = "3";
+				setTimeout(function(){
+					count_3.innerHTML = "2";
+					setTimeout(function(){
+						count_3.innerHTML = "1";
+						setTimeout(function(){
+							count_3.innerHTML = "Go!"
+							setTimeout(function(){
+								count_3.setAttribute("style", "display: none;");
+								display_buttons();
+								gameplay();
+							}, 500);
+						}, 1000);
+					}, 1000);
+				}, 1000);
+			}, 1000);
+
+
+			// Score //
+			var score_label = document.getElementById("score");
+			score_label.removeAttribute("style");
+
+
+			var current_score = 0;
+			var score_points = document.getElementById("score-points");
+			score_points.innerHTML = 0;
+		});
+
+		function display_buttons(){
+			var buy_button = document.getElementById("buy-button");
+			var sell_button = document.getElementById("sell-button");
+			var question_box = document.getElementById("question-box");
+			var timer_clock = document.getElementById("timer");
+
+			buy_button.removeAttribute("style");
+			sell_button.removeAttribute("style");
+			question_box.removeAttribute("style");
+			timer_clock.removeAttribute("style");
+
+			count_down();
+		}
+
+		var time_left = 60;
+		var times_up = false;
+		function count_down(){
+			setInterval(function(){
+				if (time_left > 0) {
+					time_left--;
+					//console.log(time_left);
+					display_time();
+				} else {
+					times_up = true;
+					display_times_up();
+				}
+				//alert("Hello");
+			}, 1000);
+		}
+
+		function display_time(){
+			var $32_power_5 = document.getElementById("$32-power-5");
+			var $16_power_4 = document.getElementById("$16-power-4");
+			var $8_power_3 = document.getElementById("$8-power-3");
+			var $4_power_2 = document.getElementById("$4-power-2");
+			var $2_power_1 = document.getElementById("$2-power-1");
+			var $1_power_0 = document.getElementById("$1-power-0");
+
+			if (time_left >= 32) {
+				$32_power_5.classList.add("blacken");
+				//console.log("2^5");
+			} else {
+				$32_power_5.classList.remove("blacken");
+				//console.log("Clearing 2^5");
+			}
+
+			if ((time_left >= 16) && ((time_left % 32) >= 16)) {
+				$16_power_4.classList.add("blacken");
+				//console.log("2^4");
+			} else {
+				$16_power_4.classList.remove("blacken");
+				//console.log("Clearing 2^4");
+			}
+
+			if ((time_left >= 8) && (((time_left % 32) % 16) >= 8)) {
+				$8_power_3.classList.add("blacken");
+				//console.log("2^3");
+			} else {
+				$8_power_3.classList.remove("blacken");
+				//console.log("Clearing 2^3");
+			}
+
+			if ((time_left >= 4) && ((((time_left % 32) % 16) % 8) >= 4)) {
+				$4_power_2.classList.add("blacken");
+				//console.log("2^2");
+			} else {
+				$4_power_2.classList.remove("blacken");
+				//console.log("Clearing 2^2"); 
+			}
+
+			if ((time_left >= 2) && (((((time_left % 32) % 16) % 8) % 4) >= 2)) {
+				$2_power_1.classList.add("blacken");
+				//console.log("2^1");
+			} else {
+				$2_power_1.classList.remove("blacken");
+				//console.log("Clearing 2^1");
+			}
+
+			if (((((time_left % 32) % 16) % 4) % 2) >= 1) {
+				$1_power_0.classList.add("blacken");
+				//console.log("2^0");
+			} else {
+				$1_power_0.classList.remove("blacken");
+				//console.log("Clearing 2^0");
+			}
+		}
+
+		// Game Play //
+
+		var correct_answer = null;
+		function gameplay(){
+			var questions_list = [["Images/buy-green.png", "buy"], ["Images/buy-red.png", "buy"], ["Images/sell-green.png", "sell"], ["Images/sell-red.png", "sell"]];
+			var random_question = Math.floor((Math.random() * 225) % 4);
+			var question_box = document.getElementById("question-box");
+			correct_answer = questions_list[random_question][1];
+			if (question_box.innerHTML != "") {
+				question_box.innerHTML = "";
+				console.log("Changed image");
+			} else {
+				console.log("Error");
+			}
+
+			if (game_state == true){
+				var new_question = document.createElement("img");
+				new_question.src = questions_list[random_question][0];
+				new_question.style = "width: 100%; height: 100%;";
+				question_box.appendChild(new_question);
+			} else {
+				game_state = false;
+			}
+
+		}
+		
+		// Clicking //
+
+		var buy_button = document.getElementById("buy-button");
+		var sell_button = document.getElementById("sell-button");
+		var current_score = 0;
+		var score_points = document.getElementById("score-points");
+		buy_button.addEventListener("click", function(){
+			if (correct_answer == "buy") {
+				current_score++;
+				score_points.innerHTML = current_score;
+				gameplay();
+			} else {
+				current_score--;
+				score_points.innerHTML = current_score;
+				gameplay();
+			}
+		});
+
+		sell_button.addEventListener("click", function(){
+			if (correct_answer == "sell") {
+				current_score++;
+				score_points.innerHTML = current_score;
+				gameplay();
+			} else {
+				current_score--;
+				score_points.innerHTML = current_score;
+				gameplay();
+			}
+		});
+		
+		
+		function display_times_up(){
+			var times_up_label = document.getElementById("times-up");
+			var final_score_label = document.getElementById("final-score-label");
+			var final_score = document.getElementById("final-score");
+
+			var buy_button = document.getElementById("buy-button");
+			var sell_button = document.getElementById("sell-button");
+			var question_box = document.getElementById("question-box");
+			var timer_clock = document.getElementById("timer");
+			var play_again_button = document.getElementById("play-again");
+
+			buy_button.setAttribute("style", "display: none;");
+			sell_button.setAttribute("style", "display: none;");
+			question_box.setAttribute("style", "display: none;");
+			timer_clock.setAttribute("style", "display: none;");
+
+			times_up_label.removeAttribute("style");
+			final_score.innerHTML = current_score;
+			final_score_label.removeAttribute("style");
+			play_again_button.removeAttribute("style");
+
+		}
+
+		// Play Again //
+
+		var play_again = document.getElementById("play-again");
+		play_again.addEventListener("click", function(){
+			location.reload();
+		});
+	</script>
+</body>
+</html>
