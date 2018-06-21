@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Diabolo Image Gallery</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="reload" class="reload"></div>
+	<div class="seperator">
+		<div class="left">
+			<div class="header">Gallery</div>
+			<ul>
+				<li><a href="#practice">Practice</a></li>
+				<li><a href="#diabolo-camp">Diabolo Camp</a></li>
+				<li><a href="#performance">Performance</a></li>
+			</ul>
+		</div>
+		<div class="right">
+			<div class="practice" id="practice">
+				<p>Practice</p>
+				<div id="practice-img" class="img-container">
+					<!-- img -->
+				</div>
+			</div>
+			<div class="diabolo-camp" id="diabolo-camp">
+				<p>Diabolo Camp</p>
+				<div id="diabolo-camp-img" class="img-container">
+					<!-- img -->
+				</div>
+			</div>
+			<div class="performance" id="performance">
+				<p>Performance</p>
+				<div id="performance-img" class="img-container">
+					<!-- img -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="light-box" class="light-box hidden">
+		<section id="section">
+			<button class="close" onclick="close_window();">x</button>
+			<img id="section-image" src="gallery/a_1.jpg">
+		</section>
+	</div>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
