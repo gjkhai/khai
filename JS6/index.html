@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tic-Tac-Toe</title>
+	<!-- Link to Comfortaa  font-family: 'Comfortaa', cursive;   -->
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+	<style type="text/css">
+		.no-margin {
+			margin: 0px;
+		}
+
+		.empty-space {
+			height: 10vh;
+		}
+
+		.title {
+			text-align: center;
+			font-family: "Comfortaa", "Times New Roman";
+		}
+
+		.winner-title {
+			display: none;
+			text-align: center;
+			font-family: "Comfortaa", "Times New Roman";
+		}
+
+		.flex {
+			display: flex;
+			justify-content: center;
+		}
+
+		.box {
+			/* To format empty box */
+			display: table-cell;
+			vertical-align: center;
+			line-height: 15vh;
+			width: 15vh;
+			height: 15vh;
+			margin: 1%;
+			padding: 2vh;
+			text-align: center;
+			font-size: 10vh;
+			font-family: "Comfortaa", "Times New Roman";
+			border: 1px solid rgba(128,128,128,1.0);
+			border-radius: 10%;
+		}
+
+		.box:hover {
+			background-color: lime;
+		}
+
+		.formatting-for-x-o {
+			color: black;
+		}
+
+		.button-formatting {
+			width: 20vh;
+			height: 5vh;
+			font-size: 2.5vh;
+			text-align: center;
+			background-color: rgba(128,128,128,0.5);
+			right: 44.8%;
+			bottom: 1vh;
+		}
+
+	</style>
+</head>
+<body class="no-margin">
+	<div class="no-margin">
+		<h1 class="title">O X O X O X O X  ----- Tic-Tac-Toe ----- X O X O X O X O </h1>
+		<div class="empty-space">
+			<h2 class="winner-title"> Player <span>X</span> has won!</h2>	
+		</div>
+	</div>
+	<div>
+		<div class="flex">
+			<div id="t_L" onclick="click_t_L()" class="box formatting-for-x-o"></div>
+			<div id="t_M" onclick="click_t_M()" class="box formatting-for-x-o"></div>
+			<div id="t_R" onclick="click_t_R()" class="box formatting-for-x-o"></div>
+		</div>
+		<div class="flex">
+			<div id="m_L" onclick="click_m_L()" class="box formatting-for-x-o"></div>
+			<div id="m_M" onclick="click_m_M()" class="box formatting-for-x-o"></div>
+			<div id="m_R" onclick="click_m_R()" class="box formatting-for-x-o"></div>
+		</div>
+		<div class="flex">
+			<div id="b_L" onclick="click_b_L()" class="box formatting-for-x-o"></div>
+			<div id="b_M" onclick="click_b_M()" class="box formatting-for-x-o"></div>
+			<div id="b_R" onclick="click_b_R()" class="box formatting-for-x-o"></div>
+		</div>
+		<div class="no-margin" width="100%" height="20px" style="text-align: center">
+			<button class="button-formatting" onclick="refresh()" type="button">Reset</button>	
+		</div>
+	</div>
+	<script type="text/javascript">
+		// The Board //
+
+		var board = {
+			top_L: "", top_M: "", top_R: "",
+			mid_L: "", mid_M: "", mid_R: "",
+			btm_L: "", btm_M: "", btm_R: ""
+		};
+		//console.log("DEBUG: " + board.top_L);
+		
+		// Reset Button //
+
+		function refresh() {
+			location.reload()
+		}
+
+		// Clicking The Board Codes //
+
+		function click_t_L() {
+			if (board.top_L !== "") {
+				console.log("DEBUG: filled with " + board.top_L);
+				window.alert("Hint:\n\nPlease pick another box.")
+			} else {
+				console.log("empty");
+				//Fill Box
+				board.top_L = "X";
+				document.getElementById("t_L").innerHTML = "X";
+				console.log("DEBUG: Now filled with " + board.top_L);
+				check_win_state();
+				move_counter++;
+				computer_moves();
+			}
+		};
+
+		function click_t_M() {
+			if (board.top_M !== "") {
+				console.log("DEBUG: filled with " + board.top_M);
+				window.alert("Hint:\n\nPlease pick another box.")
+			} else {
+				console.log("empty");
+				//Fill Box
+				board.top_M = "X";
+				document.getElementById("t_M").innerHTML = "X";
+				console.log("DEBUG: Now filled with " + board.top_M);
+				check_win_state();
+				move_counter++;
+				computer_moves();
+			}
+		};
+
+		function click_t_R() {
+			if (board.top_R !== "") {
+				console.log("DEBUG: filled with " + board.top_R);
+				window.alert("Hint:\n\nPlease pick another box.")
+			} else {
+				console.log("empty");
+				//Fill Box
+				board.top_R = "X";
+				document.getElementById("t_R").innerHTML = "X";
+				console.log("DEBUG: Now filled with " + board.top_R);
+				check_win_state();
+				move_counter++;
+				computer_moves();
+			}
+		};
+
+		function click_m_L() {
+			if (board.mid_L !== "") {
+				console.log("DEBUG: filled with " + board.mid_L);
+				window.alert("Hint:\n\nPlease pick another box.")
+			} else {
+				console.log("empty");
+				//Fill Box
+				board.mid_L = "X";
+				document.getElementById("m_L").innerHTML = "X";
+				console.log("DEBUG: Now filled with " + board.mid_L);
+				check_win_state();
+				move_counter++;
+				computer_moves();
+			}
+		};
+
+		function click_m_M() {
+			if (board.mid_M !== "") {
+				console.log("DEBUG: filled with " + board.mid_M);
+				window.alert("Hint:\n\nPlease pick another box.")
+			} else {
+				console.log("empty");
+				//Fill Box
+				board.mid_M = "X";
+				document.getElementById("m_M").innerHTML = "X";
+				console.log("DEBUG: Now filled with " + board.mid_M);
+				check_win_state();
+				move_counter++;
+				computer_moves();
+			}
+		};
+
+		function click_m_R() {
+			if (board.mid_R !== "") {
+				console.log("DEBUG: filled with " + board.mid_R);
+				window.alert("Hint:\n\nPlease pick another box.")
+			} else {
+				console.log("empty");
+				//Fill Box
+				board.mid_R = "X";
+				document.getElementById("m_R").innerHTML = "X";
+				console.log("DEBUG: Now filled with " + board.mid_R);
+				check_win_state();
+				move_counter++;
+				computer_moves();
+			}
+		};
+
+		function click_b_L() {
+			if (board.btm_L !== "") {
+				console.log("DEBUG: filled with " + board.btm_L);
+				window.alert("Hint:\n\nPlease pick another box.")
+			} else {
+				console.log("empty");
+				//Fill Box
+				board.btm_L = "X";
+				document.getElementById("b_L").innerHTML = "X";
+				console.log("DEBUG: Now filled with " + board.btm_L);
+				check_win_state();
+				move_counter++;
+				computer_moves();
+			}
+		};
+
+		function click_b_M() {
+			if (board.btm_M !== "") {
+				console.log("DEBUG: filled with " + board.btm_M);
+				window.alert("Hint:\n\nPlease pick another box.")
+			} else {
+				console.log("empty");
+				//Fill Box
+				board.btm_M = "X";
+				document.getElementById("b_M").innerHTML = "X";
+				console.log("DEBUG: Now filled with " + board.btm_M);
+				check_win_state();
+				move_counter++;
+				computer_moves();
+			}
+		};
+
+		function click_b_R() {
+			if (board.btm_R !== "") {
+				console.log("DEBUG: filled with " + board.btm_R);
+				window.alert("Hint:\n\nPlease pick another box.")
+			} else {
+				console.log("empty");
+				//Fill Box
+				board.btm_R = "X";
+				document.getElementById("b_R").innerHTML = "X";
+				console.log("DEBUG: Now filled with " + board.btm_R);
+				check_win_state();
+				move_counter++;
+				computer_moves();
+			}
+		};
+
+		// Check for wins Codes //
+
+		var win_state = null;
+
+		function check_win_state() {
+			if ((board.top_L == "X") && (board.top_M == "X") && (board.top_R == "X")) {
+				console.log("DEBUG: winner");
+				win_state = true;
+			} else if ((board.mid_L == "X") && (board.mid_M == "X") && (board.mid_R == "X")) {
+				console.log("DEBUG: winner");
+				win_state = true;
+			} else if ((board.btm_L == "X") && (board.btm_M == "X") && (board.btm_R == "X")){
+				console.log("DEBUG: winner");
+				win_state = true;
+			} else if ((board.top_L == "X") && (board.mid_L == "X") && (board.btm_L == "X")) {
+				console.log("DEBUG: winner");
+				win_state = true;
+			} else if ((board.top_M == "X") && (board.mid_M == "X") && (board.btm_M == "X")) {
+				console.log("DEBUG: winner");
+				win_state = true;
+			} else if ((board.top_R == "X") && (board.mid_R == "X") && (board.btm_R == "X")) {
+				console.log("DEBUG: winner");
+				win_state = true;
+			} else if ((board.top_L == "X") && (board.mid_M == "X") && (board.btm_R == "X")) {
+				console.log("DEBUG: winner");
+				win_state = true;
+			} else if ((board.top_R == "X") && (board.mid_M == "X") && (board.btm_L == "X")) {
+				console.log("DEBUG: winner");
+				win_state = true;
+			} else if ((board.top_L == "O") && (board.top_M == "O") && (board.top_R == "O")){
+				console.log("DEBUG: you lose");
+				win_state = false;
+			} else if ((board.mid_L == "O") && (board.mid_M == "O") && (board.mid_R == "O")) {
+				console.log("DEBUG: you lose");
+				win_state = false;
+			} else if ((board.btm_L == "O") && (board.btm_M == "O") && (board.btm_R == "O")){
+				console.log("DEBUG: you lose");
+				win_state = false;
+			} else if ((board.top_L == "O") && (board.mid_L == "O") && (board.btm_L == "O")) {
+				console.log("DEBUG: you lose");
+				win_state = false;
+			} else if ((board.top_M == "O") && (board.mid_M == "O") && (board.btm_M == "O")) {
+				console.log("DEBUG: you lose");
+				win_state = false;
+			} else if ((board.top_R == "O") && (board.mid_R == "O") && (board.btm_R == "O")) {
+				console.log("DEBUG: you lose");
+				win_state = false;
+			} else if ((board.top_L == "O") && (board.mid_M == "O") && (board.btm_R == "O")) {
+				console.log("DEBUG: you lose");
+				win_state = false;
+			} else if ((board.top_R == "O") && (board.mid_M == "O") && (board.btm_L == "O")) {
+				console.log("DEBUG: you lose");
+				win_state = false;
+			} else {
+				console.log("DEBUG no wins yet");
+			}
+
+			if (win_state == true) {
+				window.alert("You Win!!!");
+				//location.reload()
+			} else if (win_state == false) {
+				window.alert("Try Again!!!");
+				//location.reload()
+			} else if ((board.top_L != "") && (board.top_M != "") && (board.top_R != "") && (board.mid_L != "") && (board.mid_M != "") && (board.mid_R != "") && (board.btm_L != "") && (board.btm_M != "") && (board.btm_R != "")) {
+				window.alert("It's a draw!!!");
+				//location.reload()
+			}
+		}		
+
+		// Computer'd Code //
+
+		var move_counter = 0;
+		var variation = 0;
+
+		function computer_moves() {
+			if (move_counter == 1) {
+				if ((board.top_L == "X") || (board.top_R == "X") || (board.btm_L == "X") || (board.btm_R == "X")) {//variation 1
+					variation = 1;
+					board.mid_M = "O";
+					document.getElementById("m_M").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.mid_M);
+					check_win_state();
+				} else if ((board.top_M == "X") || (board.mid_L == "X") || (board.mid_R == "X") || (board.btm_M == "X")) {//variation 2
+					variation = 2;
+					if (board.top_M == "X") {// variation 2.1 top mid
+						board.btm_M = "O";
+						document.getElementById("b_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_M);
+						check_win_state();
+					} else if (board.mid_L == "X") {// variation 2.2 mid left
+						board.mid_R = "O";
+						document.getElementById("m_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_R);
+						check_win_state();
+					} else if (board.mid_R == "X") {// variation 2.3 mid right
+						board.mid_L = "O";
+						document.getElementById("m_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_L);
+						check_win_state();
+					} else if (board.btm_M == "X") {// variation 2.4 btm mid
+						board.top_M = "O";
+						document.getElementById("t_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_M);
+						check_win_state();
+					}
+				} else if (board.mid_M == "X") {//variation 3
+					variation = 3;
+					board.top_R = "O";
+					document.getElementById("t_R").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.top_R);
+					check_win_state();
+				} else {
+					console.log("DEBUG: This will not happen");
+				}
+			} else if (move_counter == 2) {
+				if (variation == 1) {
+					if (board.top_L == "X") {
+						if (board.top_M == "X") {
+							board.top_R = "O";
+							document.getElementById("t_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_R);
+							check_win_state();
+						} else if (board.mid_L == "X") {
+							board.btm_L = "O";
+							document.getElementById("b_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_L);
+							check_win_state();
+						} else if (board.top_R == "X") {
+							board.top_M = "O";
+							document.getElementById("t_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_M);
+							check_win_state();
+						} else if (board.btm_L == "X") {
+							board.mid_L = "O";
+							document.getElementById("m_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.mid_L);
+							check_win_state();
+						} else if (board.mid_R == "X") {
+							board.btm_M = "O";
+							document.getElementById("b_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_M);
+							check_win_state();
+						} else if (board.btm_M =="X") {
+							board.mid_R = "O";
+							document.getElementById("m_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.mid_R);
+							check_win_state();
+						} else if (board.btm_R =="X") {
+							board.btm_M = "O";
+							document.getElementById("b_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_M);
+							check_win_state();
+						} else {
+							console.log("DEBUG: This will not happen");
+						}
+					} else if (board.top_R == "X") {
+						if (board.top_M == "X") {
+							board.top_L = "O";
+							document.getElementById("t_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_L);
+							check_win_state();
+						} else if (board.mid_R == "X") {
+							board.btm_R = "O";
+							document.getElementById("b_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_R);
+							check_win_state();
+						} else if (board.top_L == "X") {
+							board.top_M = "O";
+							document.getElementById("t_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_M);
+							check_win_state();
+						} else if (board.btm_R) {
+							board.mid_R = "O";
+							document.getElementById("m_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.mid_R);
+							check_win_state();
+						} else if (board.mid_L == "X") {
+							board.btm_M = "O";
+							document.getElementById("b_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_M);
+							check_win_state();
+						} else if (board.btm_M =="X") {
+							board.mid_L = "O";
+							document.getElementById("m_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.mid_L);
+							check_win_state();
+						} else if (board.btm_L =="X") {
+							board.btm_M = "O";
+							document.getElementById("b_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_M);
+							check_win_state();
+						} else {
+							console.log("DEBUG: This will not happen");
+						}
+
+					} else if (board.btm_R == "X") {
+						if (board.mid_R == "X") {
+							board.top_R = "O";
+							document.getElementById("t_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_R);
+							check_win_state();
+						} else if (board.btm_M == "X") {
+							board.btm_L = "O";
+							document.getElementById("b_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_L);
+							check_win_state();
+						} else if (board.top_R == "X") {
+							board.mid_R = "O";
+							document.getElementById("m_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.mid_R);
+							check_win_state();
+						} else if (board.btm_L == "X") {
+							board.btm_M = "O";
+							document.getElementById("b_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_M);
+							check_win_state();
+						} else if (board.top_M == "X") {
+							board.mid_L = "O";
+							document.getElementById("m_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.mid_L);
+							check_win_state();
+						} else if (board.mid_L =="X") {
+							board.top_M = "O";
+							document.getElementById("t_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_M);
+							check_win_state();
+						} else if (board.top_L =="X") {
+							board.btm_M = "O";
+							document.getElementById("b_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_M);
+							check_win_state();
+						} else {
+							console.log("DEBUG: This will not happen");
+						}
+					} else if (board.btm_L == "X") {
+						if (board.btm_M == "X") {
+							board.btm_R = "O";
+							document.getElementById("b_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_R);
+							check_win_state();
+						} else if (board.mid_L == "X") {
+							board.top_L = "O";
+							document.getElementById("t_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_L);
+							check_win_state();
+						} else if (board.btm_R == "X") {
+							board.btm_M = "O";
+							document.getElementById("b_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_M);
+							check_win_state();
+						} else if (board.top_L) {
+							board.mid_L = "O";
+							document.getElementById("m_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.mid_L);
+							check_win_state();
+						} else if (board.top_M == "X") {
+							board.mid_R = "O";
+							document.getElementById("m_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.mid_R);
+							check_win_state();
+						} else if (board.mid_R =="X") {
+							board.top_M = "O";
+							document.getElementById("t_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_M);
+							check_win_state();
+						} else if (board.top_R =="X") {
+							board.btm_M = "O";
+							document.getElementById("b_M").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_M);
+							check_win_state();
+						} else {
+							console.log("DEBUG: This will not happen");
+						}
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if (variation == 2) {
+					if (board.top_M == "X") {
+						if (board.top_L == "X") {
+							board.top_R = "O";
+							document.getElementById("t_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_R);
+							check_win_state();
+						} else if (board.top_R == "X") {
+							board.top_L = "O";
+							document.getElementById("t_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_L);
+							check_win_state();
+						} else if (board.mid_L == "X") {
+							board.top_L = "O";
+							document.getElementById("t_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_L);
+							check_win_state();
+						} else if (board.mid_R == "X") {
+							board.top_R = "O";
+							document.getElementById("t_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_R);
+							check_win_state();
+						} else if (board.btm_L == "X") {
+							board.top_L = "O";
+							document.getElementById("t_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_L);
+							check_win_state();
+						} else if (board.btm_R == "X") {
+							board.top_R = "O";
+							document.getElementById("t_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_R);
+							check_win_state();
+						} else if (board.mid_M == "X") {
+							board.top_L = "O";
+							document.getElementById("t_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_L);
+							check_win_state();
+						} else {
+							console.log("DEBUG: This will not happen");
+						}
+					} else if (board.mid_R == "X") {
+						if (board.top_R =="X") {
+							board.btm_R = "O";
+							document.getElementById("b_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_R);
+							check_win_state();
+						} else if (board.btm_R == "X") {
+							board.top_R = "O";
+							document.getElementById("t_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_R);
+							check_win_state();
+						} else if (board.top_M == "X") {
+							board.top_R = "O";
+							document.getElementById("t_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_R);
+							check_win_state();
+						} else if (board.btm_M == "X") {
+							board.btm_R = "O";
+							document.getElementById("b_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_R);
+							check_win_state();
+						} else if (board.top_L == "X") {
+							board.top_R = "O";
+							document.getElementById("t_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_R);
+							check_win_state();
+						} else if (board.btm_L == "X") {
+							board.btm_R = "O";
+							document.getElementById("b_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_R);
+							check_win_state();
+						} else if (board.mid_M == "X") {
+							board.top_R = "O";
+							document.getElementById("t_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_R);
+							check_win_state();
+						} else {
+							console.log("DEBUG: This will not happen");
+						}
+					} else if (board.btm_M == "X") {
+						if (board.btm_R == "X") {
+							board.btm_L = "O";
+							document.getElementById("b_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_L);
+							check_win_state();
+						} else if (board.btm_L == "X") {
+							board.btm_R = "O";
+							document.getElementById("b_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_R);
+							check_win_state();
+						} else if (board.mid_R == "X") {
+							board.btm_R = "O";
+							document.getElementById("b_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_R);
+							check_win_state();
+						} else if (board.mid_L == "X") {
+							board.btm_L = "O";
+							document.getElementById("b_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_L);
+							check_win_state();
+						} else if (board.top_R == "X") {
+							board.btm_R = "O";
+							document.getElementById("b_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_R);
+							check_win_state();
+						} else if (board.top_L == "X") {
+							board.btm_L = "O";
+							document.getElementById("b_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_L);
+							check_win_state();
+						} else if (board.mid_M == "X") {
+							board.btm_R = "O";
+							document.getElementById("b_R").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_R);
+							check_win_state();
+						} else {
+							console.log("DEBUG: This will not happen");
+						}
+					} else if (board.mid_L == "X") {
+						if (board.btm_L == "X") {
+							board.top_L = "O";
+							document.getElementById("t_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_L);
+							check_win_state();
+						} else if (board.top_L == "X") {
+							board.btm_L = "O";
+							document.getElementById("b_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_L);
+							check_win_state();
+						} else if (board.btm_M == "X") {
+							board.btm_L = "O";
+							document.getElementById("b_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_L);
+							check_win_state();
+						} else if (board.top_M == "X") {
+							board.top_L = "O";
+							document.getElementById("t_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_L);
+							check_win_state();
+						} else if (board.btm_R == "X") {
+							board.btm_L = "O";
+							document.getElementById("b_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_L);
+							check_win_state();
+						} else if (board.top_R) {
+							board.top_L = "O";
+							document.getElementById("t_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.top_L);
+							check_win_state();
+						} else if (board.mid_M == "X") {
+							board.btm_L = "O";
+							document.getElementById("b_L").innerHTML = "O";
+							console.log("DEBUG: Computer filled in " + board.btm_L);
+							check_win_state();
+						} else {
+							console.log("DEBUG: This will not happen");
+						}
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if (variation == 3) {
+					if (board.top_M == "X") {
+						board.btm_M = "O";
+						document.getElementById("b_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_M);
+						check_win_state();
+					} else  if (board.mid_R == "X") {
+						board.mid_L = "O";
+						document.getElementById("m_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_L);
+						check_win_state();
+					} else if (board.top_L == "X") {
+						board.btm_R = "O";
+						document.getElementById("b_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_R);
+						check_win_state();
+					} else if (board.btm_R == "X") {
+						board.top_L = "O";
+						document.getElementById("t_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_L);
+						check_win_state();
+					} else if (board.mid_L == "X") {
+						board.mid_R = "O";
+						document.getElementById("m_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_R);
+						check_win_state();
+					} else if (board.btm_M == "X") {
+						board.top_M = "O";
+						document.getElementById("t_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_M);
+						check_win_state();
+					} else if (board.btm_L == "X") {
+						board.btm_R = "O";
+						document.getElementById("b_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_R);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else {
+					//no variation 4
+				}
+			} else if (move_counter == 3) {
+				autoplay();
+				console.log("DEBUG: Autoplay");
+			} else if (move_counter == 4) {
+				autoplay();
+				console.log("DEBUG: Autoplay");
+			} else {
+
+			}
+		}
+
+		function autoplay() {
+			if ((board.top_L == "O") && (board.top_M == "") && (board.top_R == "O")) {
+				board.top_M = "O";
+				document.getElementById("t_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_M);
+				check_win_state();
+			} else if ((board.top_L == "") && (board.top_M == "O") && (board.top_R == "O")) {
+				board.top_L = "O";
+				document.getElementById("t_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_L);
+				check_win_state();
+			} else if ((board.top_L == "O") && (board.top_M == "O") && (board.top_R == "")) {
+				board.top_R = "O";
+				document.getElementById("t_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_R);
+				check_win_state();
+			} else if ((board.mid_L == "O") && (board.mid_M == "") && (board.mid_R == "O")) {
+				board.mid_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_M);
+				check_win_state();
+			} else if ((board.mid_L == "") && (board.mid_M == "O") && (board.mid_R == "O")) {
+				board.mid_L = "O";
+				document.getElementById("m_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_L);
+				check_win_state();
+			} else if ((board.mid_L == "O") && (board.mid_M == "O") && (board.mid_R == "")) {
+				board.mid_R = "O";
+				document.getElementById("m_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_R);
+				check_win_state();
+			} else if ((board.btm_L == "O") && (board.btm_M == "") && (board.btm_R == "O")) {
+				board.btm_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_M);
+				check_win_state();
+			} else if ((board.btm_L == "") && (board.btm_M == "O") && (board.btm_R == "O")) {
+				board.btm_L = "O";
+				document.getElementById("b_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_L);
+				check_win_state();
+			} else if ((board.btm_L == "O") && (board.btm_M == "O") && (board.btm_R == "")) {
+				board.btm_R = "O";
+				document.getElementById("b_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_R);
+				check_win_state();
+			} else if ((board.top_L == "O") && (board.mid_L == "O") && (board.btm_L == "")) {
+				board.btm_L = "O";
+				document.getElementById("b_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_L);
+				check_win_state();
+			} else if ((board.top_L == "O") && (board.mid_L == "") && (board.btm_L == "O")) {
+				board.mid_L = "O";
+				document.getElementById("m_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_L);
+				check_win_state();
+			} else if ((board.top_L == "") && (board.mid_L == "O") && (board.btm_L == "O")) {
+				board.top_L = "O";
+				document.getElementById("t_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_L);
+				check_win_state();
+			} else if ((board.top_M == "O") && (board.mid_M == "O") && (board.btm_M == "")) {
+				board.btm_M = "O";
+				document.getElementById("b_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_M);
+				check_win_state();
+			} else if ((board.top_M == "O") && (board.mid_M == "") && (board.btm_M == "O")) {
+				board.mid_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_M);
+				check_win_state();
+			} else if ((board.top_M == "") && (board.mid_M == "O") && (board.btm_M == "O")) {
+				board.top_M = "O";
+				document.getElementById("t_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_M);
+				check_win_state();
+			} else if ((board.top_R == "O") && (board.mid_R == "O") && (board.btm_R == "")) {
+				board.btm_R = "O";
+				document.getElementById("b_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_R);
+				check_win_state();
+			} else if ((board.top_R == "O") && (board.mid_R == "") && (board.btm_R == "O")) {
+				board.mid_R = "O";
+				document.getElementById("m_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_R);
+				check_win_state();
+			} else if ((board.top_R == "") && (board.mid_R == "O") && (board.btm_R == "O")) {
+				board.top_R = "O";
+				document.getElementById("t_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_R);
+				check_win_state();
+			} else if ((board.top_L == "O") && (board.mid_M == "O") && (board.btm_R == "")) {
+				board.btm_R = "O";
+				document.getElementById("b_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_R);
+				check_win_state();
+			} else if ((board.top_L == "O") && (board.mid_M == "") && (board.btm_R == "O")) {
+				board.mid_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_M);
+				check_win_state();
+			} else if ((board.top_L == "") && (board.mid_M == "O") && (board.btm_R == "O")) {
+				board.top_L = "O";
+				document.getElementById("t_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_L);
+				check_win_state();
+			} else if ((board.top_R == "O") && (board.mid_M == "O") && (board.btm_L == "")) {
+				board.btm_L = "O";
+				document.getElementById("b_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_L);
+				check_win_state();
+			} else if ((board.top_R == "O") && (board.mid_M == "") && (board.btm_L == "O")) {
+				board.mid_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_M);
+				check_win_state();
+			} else if ((board.top_R == "") && (board.mid_M == "O") && (board.btm_L == "O")) {
+				board.top_R = "O";
+				document.getElementById("t_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_R);
+				check_win_state();
+			} else if ((board.top_L == "X") && (board.top_M == "") && (board.top_R == "X")) {
+				board.top_M = "O";
+				document.getElementById("t_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_M);
+				check_win_state();
+			} else if ((board.top_L == "") && (board.top_M == "X") && (board.top_R == "X")) {
+				board.top_L = "O";
+				document.getElementById("t_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_L);
+				check_win_state();
+			} else if ((board.top_L == "X") && (board.top_M == "X") && (board.top_R == "")) {
+				board.top_R = "O";
+				document.getElementById("t_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_R);
+				check_win_state();
+			} else if ((board.mid_L == "X") && (board.mid_M == "") && (board.mid_R == "X")) {
+				board.mid_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_M);
+				check_win_state();
+			} else if ((board.mid_L == "") && (board.mid_M == "X") && (board.mid_R == "X")) {
+				board.mid_L = "O";
+				document.getElementById("m_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_L);
+				check_win_state();
+			} else if ((board.mid_L == "X") && (board.mid_M == "X") && (board.mid_R == "")) {
+				board.mid_R = "O";
+				document.getElementById("m_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_R);
+				check_win_state();
+			} else if ((board.btm_L == "X") && (board.btm_M == "") && (board.btm_R == "X")) {
+				board.btm_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_M);
+				check_win_state();
+			} else if ((board.btm_L == "") && (board.btm_M == "X") && (board.btm_R == "X")) {
+				board.btm_L = "O";
+				document.getElementById("b_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_L);
+				check_win_state();
+			} else if ((board.btm_L == "X") && (board.btm_M == "X") && (board.btm_R == "")) {
+				board.btm_R = "O";
+				document.getElementById("b_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_R);
+				check_win_state();
+			} else if ((board.top_L == "X") && (board.mid_L == "X") && (board.btm_L == "")) {
+				board.btm_L = "O";
+				document.getElementById("b_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_L);
+				check_win_state();
+			} else if ((board.top_L == "X") && (board.mid_L == "") && (board.btm_L == "X")) {
+				board.mid_L = "O";
+				document.getElementById("m_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_L);
+				check_win_state();
+			} else if ((board.top_L == "") && (board.mid_L == "X") && (board.btm_L == "X")) {
+				board.top_L = "O";
+				document.getElementById("t_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_L);
+				check_win_state();
+			} else if ((board.top_M == "X") && (board.mid_M == "X") && (board.btm_M == "")) {
+				board.btm_M = "O";
+				document.getElementById("b_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_M);
+				check_win_state();
+			} else if ((board.top_M == "X") && (board.mid_M == "") && (board.btm_M == "X")) {
+				board.mid_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_M);
+				check_win_state();
+			} else if ((board.top_M == "") && (board.mid_M == "X") && (board.btm_M == "X")) {
+				board.top_M = "O";
+				document.getElementById("t_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_M);
+				check_win_state();
+			} else if ((board.top_R == "X") && (board.mid_R == "X") && (board.btm_R == "")) {
+				board.btm_R = "O";
+				document.getElementById("b_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_R);
+				check_win_state();
+			} else if ((board.top_R == "X") && (board.mid_R == "") && (board.btm_R == "X")) {
+				board.mid_R = "O";
+				document.getElementById("m_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_R);
+				check_win_state();
+			} else if ((board.top_R == "") && (board.mid_R == "X") && (board.btm_R == "X")) {
+				board.top_R = "O";
+				document.getElementById("t_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_R);
+				check_win_state();
+			} else if ((board.top_L == "X") && (board.mid_M == "X") && (board.btm_R == "")) {
+				board.btm_R = "O";
+				document.getElementById("b_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_R);
+				check_win_state();
+			} else if ((board.top_L == "X") && (board.mid_M == "") && (board.btm_R == "X")) {
+				board.mid_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_M);
+				check_win_state();
+			} else if ((board.top_L == "") && (board.mid_M == "X") && (board.btm_R == "X")) {
+				board.top_L = "O";
+				document.getElementById("t_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_L);
+				check_win_state();
+			} else if ((board.top_R == "X") && (board.mid_M == "X") && (board.btm_L == "")) {
+				board.btm_L = "O";
+				document.getElementById("b_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_L);
+				check_win_state();
+			} else if ((board.top_R == "X") && (board.mid_M == "") && (board.btm_L == "X")) {
+				board.mid_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_M);
+				check_win_state();
+			} else if ((board.top_R == "") && (board.mid_M == "X") && (board.btm_L == "X")) {
+				board.top_R = "O";
+				document.getElementById("t_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_R);
+				check_win_state();
+			} else if (variation == 1) {
+				if ((board.top_M == "O") && (board.mid_M == "O")) {
+					if (board.mid_L == "") {
+						board.mid_L = "O";
+						document.getElementById("m_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_L);
+						check_win_state();
+					} else if (board.mid_R == "") {
+						board.mid_R = "O";
+						document.getElementById("m_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_R);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if ((board.mid_R == "O") && (board.mid_M == "O")) {
+					if (board.top_M == "") {
+						board.top_M = "O";
+						document.getElementById("t_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_M);
+						check_win_state();
+					} else if (board.btm_M == "") {
+						board.btm_M = "O";
+						document.getElementById("b_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_M);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if ((board.btm_M == "O") && (board.mid_M == "O")) {
+					if (board.mid_R == "") {
+						board.mid_R = "O";
+						document.getElementById("m_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_R);
+						check_win_state();
+					} else if (board.mid_L == "") {
+						board.mid_L = "O";
+						document.getElementById("m_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_L);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					} 
+				} else if ((board.mid_L == "O") && (board.mid_M == "O")) {
+					if (board.btm_M == "") {
+						board.btm_M = "O";
+						document.getElementById("b_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_M);
+						check_win_state();
+					} else if (board.top_M == "") {
+						board.top_M = "O";
+						document.getElementById("t_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_M);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else {
+					autodraw();
+					console.log("DEBUG: Autodraw");
+				}
+			} else if (variation == 2) {
+				if ((board.btm_M == "O") && (board.mid_R == "X") && (board.top_R == "O")) {// 2 choices
+					if ((board.top_M == "X") && (board.btm_R == "X")) {
+						board.mid_M = "O";
+						document.getElementById("m_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_M);
+						check_win_state();
+					} else if (board.btm_L == "") {
+						board.btm_L = "O";
+						document.getElementById("b_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_L);
+						check_win_state();
+					} else if (board.mid_L == "") {
+						board.mid_L = "O";
+						document.getElementById("m_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_L);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if ((board.mid_L == "O") && (board.btm_M == "X") && (board.btm_R == "O")) {
+					if ((board.mid_R == "X") && (board.btm_L == "X")) {
+						board.mid_M = "O";
+						document.getElementById("m_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_M);
+						check_win_state();
+					} else if (board.top_L == "") {
+						board.top_L = "O";
+						document.getElementById("t_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_L);
+						check_win_state();
+					} else if (board.top_M == "") {
+						board.top_M = "O";
+						document.getElementById("t_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_M);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					} 
+				} else if ((board.top_M == "O") && (board.mid_L == "X") && (board.btm_L == "O")) {
+					if ((board.btm_M == "X") && (board.top_L == "X")) {
+						board.mid_M = "O";
+						document.getElementById("m_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_M);
+						check_win_state();
+					} else if (board.top_R == "") {
+						board.top_R = "O";
+						document.getElementById("t_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_R);
+						check_win_state();
+					} else if (board.mid_R == "") {
+						board.mid_R = "O";
+						document.getElementById("m_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_R);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					} 
+				} else if ((board.mid_R == "O") && (board.top_M == "X") && (board.top_L == "O")) {
+					if ((board.mid_L == "X") && (board.top_R == "X")) {
+						board.mid_M = "O";
+						document.getElementById("m_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_M);
+						check_win_state();
+					} else if (board.btm_R == "") {
+						board.btm_R = "O";
+						document.getElementById("b_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_R);
+						check_win_state();
+					} else if (board.btm_M == "") {
+						board.btm_M = "O";
+						document.getElementById("b_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_M);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					} 
+				} else if ((board.btm_M == "O") && (board.mid_L == "X") && (board.top_L == "O")) {
+					if ((board.top_M == "X") && (board.btm_L == "X")) {
+						board.mid_M = "O";
+						document.getElementById("m_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_M);
+						check_win_state();
+					} else if (board.btm_R == "") {
+						board.btm_R = "O";
+						document.getElementById("b_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_R);
+						check_win_state();
+					} else if (board.mid_R == "") {
+						board.mid_R = "O";
+						document.getElementById("m_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_R);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					} 
+				} else if ((board.mid_L == "O") && (board.top_M == "X") && (board.top_R == "O")) {
+					if ((board.mid_R == "X") && (board.top_L == "X")) {
+						board.mid_M = "O";
+						document.getElementById("m_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_M);
+						check_win_state();
+					} else if (board.btm_L == "") {
+						board.btm_L = "O";
+						document.getElementById("b_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_L);
+						check_win_state();
+					} else if (board.btm_M == "") {
+						board.btm_M = "O";
+						document.getElementById("b_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_M);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if ((board.top_M == "O") && (board.mid_R == "X") && (board.btm_R == "O")) {
+					if ((board.btm_M == "X") && (board.top_R == "X")) {
+						board.mid_M = "O";
+						document.getElementById("m_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_M);
+						check_win_state();
+					} else if (board,top_L == "") {
+						board.top_L = "O";
+						document.getElementById("t_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_L);
+						check_win_state();
+					} else if (board.mid_L == "") {
+						board.mid_L = "O";
+						document.getElementById("m_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_L);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if ((board.mid_R == "O") && (board.btm_M == "X") && (board,btm_L == "O")) {
+					if (board.mid_L == "X" && board.btm_R == "X") {
+						board.mid_M = "O";
+						document.getElementById("m_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_M);
+						check_win_state();
+					} else if (board.top_R == "") {
+						board.top_R = "O";
+						document.getElementById("t_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_R);
+						check_win_state();
+					} else if (board.top_M == "") {
+						board.top_M = "O";
+						document.getElementById("t_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_M);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if ((board.top_L == "O") && (board.top_M == "X") && (board.mid_M == "X") && (board.btm_M == "O") && (board.btm_R == "X")) {
+					board.mid_R = "O";
+					document.getElementById("m_R").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.mid_R);
+					check_win_state();
+				} else if ((board.top_R == "O") && (board.mid_R == "X") && (board.mid_M == "X") && (board.mid_L == "O") && (board.btm_L == "X")) {
+					board.btm_M = "O";
+					document.getElementById("b_M").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.btm_M);
+					check_win_state();
+				} else if ((board.btm_R == "O") && (board.btm_M == "X") && (board.mid_M == "X") && (board.top_M == "O") && (board.top_L == "X")) {
+					board.mid_L = "O";
+					document.getElementById("m_L").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.mid_L);
+					check_win_state();
+				} else if ((board.btm_L == "O") && (board.mid_L == "X") && (board.mid_M == "X") && (board.mid_R == "O") && (board.top_R == "X")) {
+					board.top_M = "O";
+					document.getElementById("t_M").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.top_M);
+					check_win_state();
+				} else if ((board.btm_M == "O") && (board.btm_L == "X")) {
+					if (board.mid_R == "") {
+						board.mid_R = "O";
+						document.getElementById("m_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_R);
+						check_win_state();
+					} else if (board.mid_L == "") {
+						board.mid_L = "O";
+						document.getElementById("m_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_L);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if ((board.mid_L == "O") && (board.top_L == "X")) {
+					if (board.btm_M == "") {
+						board.btm_M = "O";
+						document.getElementById("b_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_M);
+						check_win_state();
+					} else if (board.top_M == "") {
+						board.top_M = "O";
+						document.getElementById("t_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_M);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if ((board.top_M == "O") && (board.top_R == "X")) {
+					if (board.mid_L =="") {
+						board.mid_L = "O";
+						document.getElementById("m_L").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_L);
+						check_win_state();
+					} else if (board.mid_R == "") {
+						board.mid_R = "O";
+						document.getElementById("m_R").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.mid_R);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else if ((board.mid_R == "O") && (board.btm_R == "X")) {
+					if (board.top_M == "") {
+						board.top_M = "O";
+						document.getElementById("t_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.top_M);
+						check_win_state();
+					} else if (board.btm_M == "") {
+						board.btm_M = "O";
+						document.getElementById("b_M").innerHTML = "O";
+						console.log("DEBUG: Computer filled in " + board.btm_M);
+						check_win_state();
+					} else {
+						console.log("DEBUG: This will not happen");
+					}
+				} else {
+					autodraw();
+					console.log("DEBUG: Autodraw");
+				}
+			} else if (variation == 3) {
+				if ((board.top_R == "O") && (board.top_M == "X") && (board.mid_M == "X") && (board.btm_M == "O") && (board.btm_L == "X")) {
+					board.mid_L = "O";
+					document.getElementById("m_L").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.mid_L);
+					check_win_state();
+				} else if ((board.btm_R == "O") && (board.mid_R == "X") && (board.mid_M == "X") && (board.mid_L == "O") && (board.top_L == "X")) {
+					board.top_M = "O";
+					document.getElementById("t_M").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.top_M);
+					check_win_state();
+				} else if ((board.btm_L == "O") && (board.btm_M == "X") && (board.mid_M == "X") && (board.top_M == "O") && (board.top_R == "X")) {
+					board.mid_R = "O";
+					document.getElementById("m_R").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.mid_R);
+					check_win_state();
+				} else if ((board.top_L == "O") && (board.mid_L == "X") && (board.mid_M == "X") && (board.mid_R == "O") && (board.btm_R == "X")) {
+					board.btm_M = "O";
+					document.getElementById("b_M").innerHTML = "O";
+					console.log("DEBUG: Computer filled in " + board.btm_M);
+					check_win_state();
+				} else {
+					autodraw();
+					console.log("DEBUG Autodraw")
+				}
+			} else {
+				console.log("DEBUG: This will not happen");
+			}
+		}
+
+		function autodraw() {
+			if (board.mid_M == "") {
+				board.mid_M = "O";
+				document.getElementById("m_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_M);
+				check_win_state();
+			} else if (board.mid_R == "") {
+				board.mid_R = "O";
+				document.getElementById("m_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_R);
+				check_win_state();
+			} else if (board.mid_L == "") {
+				board.mid_L = "O";
+				document.getElementById("m_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.mid_L);
+				check_win_state();
+			} else if (board.top_M == "") {
+				board.top_M = "O";
+				document.getElementById("t_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_M);
+				check_win_state();
+			} else if (board.btm_M == "") {
+				board.btm_M = "O";
+				document.getElementById("b_M").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_M);
+				check_win_state();
+			} else if (board.btm_R == "") {
+				board.btm_R = "O";
+				document.getElementById("b_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_R);
+				check_win_state();
+			} else if (board.btm_L == "") {
+				board.btm_L = "O";
+				document.getElementById("b_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.btm_M);
+				check_win_state();
+			} else if (board.top_L == "") {
+				board.top_L = "O";
+				document.getElementById("t_L").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_L);
+				check_win_state();
+			} else if (board.top_R == "") {
+				board.top_R = "O";
+				document.getElementById("t_R").innerHTML = "O";
+				console.log("DEBUG: Computer filled in " + board.top_R);
+				check_win_state();
+			} else {
+				console.log("DEBUG: This will not happen");
+			}
+		}
+	</script>
+</body>
+</html>

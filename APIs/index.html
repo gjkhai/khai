@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess The Item!!!</title>
+	<link rel="stylesheet" type="text/css" href="">
+	<style type="text/css">
+		.text-formatting {
+			text-align: center;
+			align-items: center;
+			color: hsla(0,0%,100%,.6);
+			font-family: "Arial";
+		}
+
+		.bg-color {
+			background-color: blue;
+		}
+
+		.title {
+			font-size: 3em;
+			margin: 0px;
+		}
+
+		.text {
+			font-size: 2em;
+			margin: 1%;
+		}
+
+		.div-color {
+			color: #444;
+		}
+
+		.button-formatting {
+			width: 25vh;
+			height: 8vh;
+			color: hsla(0,0%,100%,1.0);
+			border: 1px solid rgba(128, 128, 128, 0.2);
+			font-size: 1.5em;
+			font-family: "Arial";
+			border-radius: 5vh;
+			margin: 0vh 5px;
+		}
+
+		#picture-gallery li {
+			display: inline-block;
+		}
+
+		#picture-gallery li img {
+			max-width: 300px;
+			vertical-align: middle;
+		}
+
+		#button1 {
+			background-color: rgba(255, 204, 0, 1.0);
+		}
+
+		#button2 {
+			background-color: orange;
+		}
+
+		#button3 {
+			background-color: rgba(153, 102, 0, 1.0);
+		}
+	</style>
+</head>
+<body style="margin: 0px; background-color: #35465c;">
+	<h1 class="text-formatting title">Guess The Item!!!</h1>
+	<p class="text-formatting text">Your goal is to pick the correct tag that represents the item.</p>
+	<div class="text-formatting div-color">
+		<!-- Countries [Bread, Orange, Mouse, Stick] [Norway, Iceland, Finland, Sweeden] -->
+		<button id="button1" type="submit" onclick="guess('bread+stick')" class="button-formatting">#bread</button>
+		<button id="button2" type="submit" onclick="guess('orange+bread')" class="button-formatting">#orange</button>
+		<button id="button3" type="submit" onclick="guess('cheesestick')" class="button-formatting">#stick</button>
+	</div>
+	<hr style=" height=10px; border: 2px solid hsla(0,0%,100%,.6);">
+	<ul id="picture-gallery">
+		
+	</ul>
+	<script type="text/javascript">
+		// list
+		var list = ["bread+stick", "orange+bread", "cheesestick"]; // Choose better tags so that more pages can be generated.
+		var picture_gallery = document.getElementById("picture-gallery")
+
+		//PRNGs
+		var random_list = (Math.floor(Math.random()*1000) % 3);
+		var random_page = Math.floor(Math.random()*250);
+
+		var selected_item = list[random_list];
+		//console.log(selected_item);
+
+		//Guessing validation
+		function guess() {
+			window.alert("Refreshing...");
+			location.reload();
+			console.log(list[random_list]);
+		}
+
+		//fetching API
+		fetch("https://api.tumblr.com/v2/tagged?tag=" + selected_item + "&api_key=QgPv67WAh1cZqLPi45lCS7vNWE6grlSmjWEtkRhQFXScOGzk58").then(function(response) {
+			console.log(response);
+			if (!response.ok) {
+				window.alert("Looks like there is some errors with the network. Try again later.");
+				return;
+			}
+			return response.json();
+		
+		}).then(function(result) {	
+			console.log(result);
+			
+			if (!result){
+				return;
+		}
+			//document.write(result.response[0].photos[0].alt_sizes[0].url);
+			
+			var posts = result.response;
+			for (let i = 0; i < posts.length; i++){
+				if (posts[i].type == "photo") {
+					var photo_url = posts[i].photos[0].alt_sizes[0].url;
+					//            [(posts[i].photos[0].alt_sizes.length - 1)]
+					console.log(photo_url);
+
+					var new_img_element = document.createElement("img"); // <img>
+					new_img_element.src = photo_url; // <img src"photo_url">
+
+					var new_li_element = document.createElement("li"); // <li>
+					new_li_element.appendChild(new_img_element); // <li><img src"photo_url"></li>
+					picture_gallery.appendChild(new_li_element); // <ul><li><img src="photo_url"></li></ul>
+
+				} else {
+					console.log("Not a picture");
+					continue;
+				}
+				
+			} 
+		}).catch(function(err){
+			window.alert("Looks like there is some errors with the network or Tumblr's API. Try again later.");
+			console.log("DEBUG: " + err);
+		});
+
+		function guess(x) {
+			if (x == selected_item) {
+				window.alert("You are right!!!");
+				location.reload();
+			} else {
+				if (selected_item == "cheesestick") {
+					window.alert("Nope. It was #stick. Try harder!" );
+					location.reload();
+				} else if (selected_item == "orange+bread") {
+					window.alert("Nope. It was #orange. Try harder!");
+					location.reload();
+				} else if (selected_item == "bread+stick") {
+					window.alert("Nope. It was #bread. Try harder!");
+					location.reload();
+				} else {
+					console.log("Error......");
+					location.reload();
+				}
+			}
+		}
+	</script>
+</body>
+</html>
